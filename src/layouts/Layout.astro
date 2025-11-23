@@ -1,0 +1,33 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Landing page moderna" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <!-- Fuente Google Fonts (Outfit para un look moderno) -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="bg-slate-50 text-slate-900 font-['Outfit'] overflow-x-hidden">
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    /* Estilos base para Swiper si es necesario */
+    :root {
+        --swiper-theme-color: #2563eb;
+    }
+</style>
