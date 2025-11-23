@@ -2,690 +2,451 @@
 import Layout from "../layouts/Layout.astro";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 ---
 
 <Layout title="The Gentleman's Club | Barbería Premium">
-	<!-- MENÚ FLOTANTE CENTRADO (Estilo "Isla Dinámica") -->
+	<!-- MENÚ FLOTANTE -->
 	<nav
-		id="floating-nav"
-		class="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[90%] md:w-auto"
+		class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto animate-fade-in-down"
 	>
 		<div
-			class="bg-black/0 backdrop-blur-none border border-white/0 px-8 py-4 rounded-full flex items-center justify-between md:justify-center gap-8 transition-all duration-500"
-			id="nav-container"
+			class="bg-black/60 backdrop-blur-md border border-white/10 px-6 py-3 rounded-full shadow-2xl flex items-center justify-between md:justify-center gap-6 md:gap-10"
 		>
-			<!-- Logo pequeño (Solo aparece al bajar, opcional) -->
-			<span
-				class="font-serif font-bold text-amber-500 opacity-0 md:hidden transition-opacity"
-				id="mini-logo">TBC.</span
+			<a
+				href="#"
+				class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
+				>Inicio</a
 			>
-
-			<!-- Enlaces -->
-			<ul
-				class="flex items-center gap-6 text-sm font-medium tracking-widest uppercase text-white/80"
+			<a
+				href="#nosotros"
+				class="hidden md:block text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
+				>Nosotros</a
 			>
-				<li>
-					<a href="#" class="hover:text-amber-500 transition-colors"
-						>Inicio</a
-					>
-				</li>
-				<li>
-					<a
-						href="#servicios"
-						class="hover:text-amber-500 transition-colors"
-						>Servicios</a
-					>
-				</li>
-				<!-- Logo Central (Visible siempre) -->
-				<li
-					class="hidden md:block text-xl font-serif font-bold text-white mx-4"
-				>
-					TBC.
-				</li>
-				<li>
-					<a
-						href="#galeria"
-						class="hover:text-amber-500 transition-colors"
-						>Galería</a
-					>
-				</li>
-				<li>
-					<a
-						href="#reservar"
-						class="text-amber-500 hover:text-amber-400 transition-colors font-bold"
-						>Reservar</a
-					>
-				</li>
-			</ul>
+			<span class="text-xl font-serif font-bold text-amber-500 mx-2"
+				>TBC.</span
+			>
+			<a
+				href="#galeria"
+				class="hidden md:block text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
+				>Trabajos</a
+			>
+			<a
+				href="#reservar"
+				class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-amber-500 border border-amber-500/30 px-4 py-2 rounded-full hover:bg-amber-500 hover:text-black transition-all"
+				>Reservar</a
+			>
 		</div>
 	</nav>
-	<!-- 1. HERO: Estilo "Peaky Blinders" / Moderno -->
-	<section class="relative h-screen w-full overflow-hidden bg-black">
-		<!-- Fondo con video o imagen estática de barbería oscura -->
-		<div
-			class="absolute inset-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1503951914875-452162b7f304?q=80&w=2070')] bg-cover bg-center animate-slow-zoom"
-		>
-		</div>
-		<div
-			class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"
-		>
+
+	<!-- 1. HERO CON IMAGEN DE FONDO -->
+	<section
+		class="relative h-screen w-full flex flex-col items-center justify-center text-center px-4 overflow-hidden"
+	>
+		<!-- IMAGEN DE FONDO (Nueva) -->
+		<div class="absolute inset-0">
+			<img
+				src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074"
+				class="w-full h-full object-cover opacity-40"
+				alt="Fondo Barbería"
+			/>
+			<!-- Degradado negro encima para que se lea el texto -->
+			<div
+				class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/60"
+			>
+			</div>
 		</div>
 
-		<div
-			class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4"
-		>
-			<img
-				src="https://cdn-icons-png.flaticon.com/512/76/76792.png"
-				class="w-16 h-16 invert mb-6 opacity-80"
-				alt="Logo Tijeras"
-			/>
+		<div class="relative z-10 mt-10">
 			<span
-				class="text-amber-500 tracking-[0.4em] text-sm font-bold uppercase mb-4 animate-fade-in-up"
-				>Est. 2025 • Santiago</span
+				class="text-amber-500 tracking-[0.4em] text-xs font-bold uppercase mb-6 block animate-fade-in-up"
+				>Santiago • Est. 2025</span
 			>
 			<h1
-				class="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tighter animate-fade-in-up delay-100 font-serif"
+				class="text-6xl md:text-9xl font-black text-white mb-6 tracking-tighter leading-none animate-fade-in-up delay-100 drop-shadow-2xl font-serif"
 			>
 				THE BARBER <br />
 				<span
-					class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700"
+					class="text-transparent bg-clip-text bg-gradient-to-b from-amber-300 to-amber-800"
 					>CLUB.</span
 				>
 			</h1>
 			<p
-				class="text-gray-300 text-lg md:text-xl max-w-xl mb-10 font-light animate-fade-in-up delay-200"
+				class="text-gray-300 text-lg max-w-xl mx-auto mb-10 font-light tracking-wide animate-fade-in-up delay-200 text-shadow"
 			>
-				No es solo un corte, es un ritual. Recupera tu mejor versión con
-				nuestros maestros barberos.
+				Donde el estilo clásico se encuentra con la técnica moderna.
 			</p>
-			<div class="flex gap-4 animate-fade-in-up delay-300">
+			<div class="animate-fade-in-up delay-300">
 				<a
 					href="#reservar"
-					class="bg-amber-600 text-black px-8 py-4 rounded-sm font-bold hover:bg-amber-500 transition-all uppercase text-sm tracking-wider shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+					class="bg-amber-600 text-black px-10 py-4 rounded-sm font-bold hover:bg-white transition-all uppercase text-xs tracking-[0.2em] shadow-lg shadow-amber-900/20"
 				>
-					Reservar Hora
-				</a>
-				<a
-					href="#servicios"
-					class="border border-white/30 text-white px-8 py-4 rounded-sm font-bold hover:bg-white/10 transition-all uppercase text-sm tracking-wider"
-				>
-					Ver Servicios
+					Agendar Cita
 				</a>
 			</div>
 		</div>
 	</section>
 
-	<!-- SECCIÓN: LA EXPERIENCIA (Features Visuales) -->
-	<section class="py-20 bg-zinc-950 border-b border-white/5">
+	<!-- 2. SOBRE EL MAESTRO (Sección Nueva) -->
+	<section id="nosotros" class="py-24 relative bg-black/20">
 		<div class="container mx-auto px-6">
 			<div
-				class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10"
+				class="flex flex-col md:flex-row items-center gap-12 md:gap-20"
 			>
-				<!-- Feature 1 -->
+				<!-- Imagen del Barbero -->
+				<div class="w-full md:w-1/2 relative group">
+					<div
+						class="absolute -inset-4 border border-amber-600/30 rounded-sm group-hover:scale-105 transition-transform duration-500"
+					>
+					</div>
+					<img
+						src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1000"
+						alt="Maestro Barbero"
+						class="w-full h-[500px] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 shadow-2xl"
+					/>
+				</div>
+				<!-- Texto -->
+				<div class="w-full md:w-1/2">
+					<span
+						class="text-amber-600 font-bold tracking-widest uppercase text-xs mb-2 block"
+						>El Legado</span
+					>
+					<h2 class="text-4xl md:text-5xl font-serif text-white mb-6">
+						Más que un corte, <br /> es una declaración.
+					</h2>
+					<p class="text-gray-400 text-lg mb-6 leading-relaxed">
+						Soy <strong class="text-white">Marco Rossi</strong>,
+						fundador de TBC. Tras 10 años perfeccionando el arte de
+						la barbería en Londres y Santiago, decidí crear un
+						espacio donde el tiempo se detiene.
+					</p>
+					<p class="text-gray-400 text-lg mb-8 leading-relaxed">
+						Aquí no vienes solo a cortarte el pelo; vienes a
+						relajarte, tomar un buen whiskey y salir sintiéndote
+						renovado. Mi garantía es simple: saldrás de esa silla
+						viéndote mejor que nunca.
+					</p>
+					<img
+						src="https://cdn-icons-png.flaticon.com/512/10061/10061683.png"
+						class="h-16 invert opacity-50"
+						alt="Firma"
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 3. CARRUSEL DE TRABAJOS (Recuperado y Mejorado) -->
+	<section id="galeria" class="py-24 border-y border-white/5 bg-white/[0.02]">
+		<div class="container mx-auto px-6">
+			<div
+				class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+			>
+				<div>
+					<h2
+						class="text-3xl md:text-4xl font-bold text-white font-serif"
+					>
+						Galería de Estilos
+					</h2>
+					<p class="text-gray-500 mt-2">
+						Resultados reales, sin filtros.
+					</p>
+				</div>
+				<!-- Flechas de navegación -->
+				<div class="flex gap-2">
+					<button
+						class="prev-btn w-12 h-12 border border-white/10 text-white hover:bg-amber-600 hover:border-amber-600 hover:text-black transition-all flex items-center justify-center"
+						>←</button
+					>
+					<button
+						class="next-btn w-12 h-12 border border-white/10 text-white hover:bg-amber-600 hover:border-amber-600 hover:text-black transition-all flex items-center justify-center"
+						>→</button
+					>
+				</div>
+			</div>
+
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper pb-10">
+					<!-- Foto 1 -->
+					<div class="swiper-slide">
+						<div
+							class="relative h-[450px] group overflow-hidden border border-white/10"
+						>
+							<img
+								src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=800"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+							/>
+							<div
+								class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+							>
+								<p
+									class="text-amber-500 font-bold text-sm uppercase tracking-widest"
+								>
+									Barba & Fade
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- Foto 2 -->
+					<div class="swiper-slide">
+						<div
+							class="relative h-[450px] group overflow-hidden border border-white/10"
+						>
+							<img
+								src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=800"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+							/>
+							<div
+								class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+							>
+								<p
+									class="text-amber-500 font-bold text-sm uppercase tracking-widest"
+								>
+									Corte Clásico
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- Foto 3 -->
+					<div class="swiper-slide">
+						<div
+							class="relative h-[450px] group overflow-hidden border border-white/10"
+						>
+							<img
+								src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=800"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+							/>
+							<div
+								class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+							>
+								<p
+									class="text-amber-500 font-bold text-sm uppercase tracking-widest"
+								>
+									Pompadour
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- Foto 4 -->
+					<div class="swiper-slide">
+						<div
+							class="relative h-[450px] group overflow-hidden border border-white/10"
+						>
+							<img
+								src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+							/>
+							<div
+								class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+							>
+								<p
+									class="text-amber-500 font-bold text-sm uppercase tracking-widest"
+								>
+									Fade
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. SERVICIOS -->
+	<section id="servicios" class="py-24 relative">
+		<div class="container mx-auto px-6">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-white mb-2 font-serif">
+					Carta de Servicios
+				</h2>
+				<div class="w-20 h-1 bg-amber-600 mx-auto"></div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<!-- Card 1 -->
 				<div
-					class="p-6 group hover:bg-white/5 transition-colors rounded-lg"
+					class="bg-white/5 border border-white/5 p-10 hover:border-amber-500/50 transition-colors duration-300 group"
 				>
 					<div
-						class="text-4xl mb-4 grayscale group-hover:grayscale-0 transition-all"
+						class="text-amber-500 text-4xl mb-4 opacity-50 group-hover:opacity-100"
+					>
+						✂️
+					</div>
+					<h3 class="text-2xl text-white font-serif mb-2">
+						Corte Clásico
+					</h3>
+					<p class="text-gray-500 text-sm mb-6 leading-relaxed">
+						Lavado premium, corte a tijera o máquina, y peinado con
+						productos Reuzel.
+					</p>
+					<div
+						class="border-t border-white/10 pt-4 flex justify-between items-center"
+					>
+						<span class="text-xs text-gray-400 uppercase"
+							>45 min</span
+						>
+						<p class="text-xl font-bold text-white">$18.000</p>
+					</div>
+				</div>
+				<!-- Card 2 -->
+				<div
+					class="bg-gradient-to-b from-amber-900/20 to-transparent border border-amber-500/20 p-10 relative overflow-hidden"
+				>
+					<div
+						class="absolute top-4 right-4 text-amber-500 text-xs font-bold tracking-widest uppercase border border-amber-500 px-2 py-1"
+					>
+						Top
+					</div>
+					<div class="text-amber-500 text-4xl mb-4">🪒</div>
+					<h3 class="text-2xl text-white font-serif mb-2">
+						Barba Ritual
+					</h3>
+					<p class="text-gray-400 text-sm mb-6 leading-relaxed">
+						Toalla caliente, aceites esenciales, navaja clásica y
+						aftershave refrescante.
+					</p>
+					<div
+						class="border-t border-white/10 pt-4 flex justify-between items-center"
+					>
+						<span class="text-xs text-gray-400 uppercase"
+							>30 min</span
+						>
+						<p class="text-xl font-bold text-white">$15.000</p>
+					</div>
+				</div>
+				<!-- Card 3 -->
+				<div
+					class="bg-white/5 border border-white/5 p-10 hover:border-amber-500/50 transition-colors duration-300 group"
+				>
+					<div
+						class="text-amber-500 text-4xl mb-4 opacity-50 group-hover:opacity-100"
 					>
 						🥃
 					</div>
-					<h3
-						class="text-white font-bold uppercase tracking-wider text-sm mb-2"
-					>
-						Bar Abierto
+					<h3 class="text-2xl text-white font-serif mb-2">
+						Full Experience
 					</h3>
-					<p class="text-gray-500 text-xs">
-						Whiskey o café de grano incluido con tu corte.
+					<p class="text-gray-500 text-sm mb-6 leading-relaxed">
+						La combinación completa. Incluye limpieza facial básica
+						y bebida de cortesía.
 					</p>
-				</div>
-
-				<!-- Feature 2 -->
-				<div
-					class="p-6 group hover:bg-white/5 transition-colors rounded-lg"
-				>
 					<div
-						class="text-4xl mb-4 grayscale group-hover:grayscale-0 transition-all"
+						class="border-t border-white/10 pt-4 flex justify-between items-center"
 					>
-						🎱
+						<span class="text-xs text-gray-400 uppercase"
+							>90 min</span
+						>
+						<p class="text-xl font-bold text-white">$28.000</p>
 					</div>
-					<h3
-						class="text-white font-bold uppercase tracking-wider text-sm mb-2"
-					>
-						Sala de Espera
-					</h3>
-					<p class="text-gray-500 text-xs">
-						Mesa de billar y PS5 para que la espera sea placer.
-					</p>
-				</div>
-
-				<!-- Feature 3 -->
-				<div
-					class="p-6 group hover:bg-white/5 transition-colors rounded-lg"
-				>
-					<div
-						class="text-4xl mb-4 grayscale group-hover:grayscale-0 transition-all"
-					>
-						🎵
-					</div>
-					<h3
-						class="text-white font-bold uppercase tracking-wider text-sm mb-2"
-					>
-						Playlist Curada
-					</h3>
-					<p class="text-gray-500 text-xs">
-						Jazz, Blues y Rock Clásico ambiental.
-					</p>
-				</div>
-
-				<!-- Feature 4 -->
-				<div
-					class="p-6 group hover:bg-white/5 transition-colors rounded-lg"
-				>
-					<div
-						class="text-4xl mb-4 grayscale group-hover:grayscale-0 transition-all"
-					>
-						✨
-					</div>
-					<h3
-						class="text-white font-bold uppercase tracking-wider text-sm mb-2"
-					>
-						Productos Top
-					</h3>
-					<p class="text-gray-500 text-xs">
-						Solo usamos Reuzel y marcas importadas.
-					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- 2. SERVICIOS (La Carta) -->
-	<section id="servicios" class="py-24 bg-zinc-950 text-white relative">
-		<div class="container mx-auto px-6">
-			<div class="text-center mb-16">
-				<h2
-					class="text-3xl md:text-4xl font-bold font-serif text-amber-500"
-				>
-					Nuestros Servicios
-				</h2>
-				<p class="text-gray-500 mt-2">
-					Cuidado clásico para el hombre moderno.
-				</p>
-			</div>
-
+	<!-- 5. RESERVA -->
+	<section id="reservar" class="py-24 relative">
+		<div class="container mx-auto px-6 max-w-3xl">
 			<div
-				class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+				class="bg-zinc-900/80 border border-white/10 p-8 md:p-12 shadow-2xl text-center relative overflow-hidden"
 			>
-				<!-- Servicio 1 -->
+				<!-- Luz decorativa -->
 				<div
-					class="p-8 border border-white/10 bg-white/5 hover:border-amber-500/50 transition-colors group"
+					class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50"
 				>
-					<div class="flex justify-between items-baseline mb-4">
-						<h3
-							class="text-xl font-bold text-white group-hover:text-amber-500 transition-colors"
-						>
-							Corte Clásico
-						</h3>
-						<span class="text-amber-500 font-bold text-lg"
-							>$15.000</span
-						>
-					</div>
-					<p class="text-gray-400 text-sm leading-relaxed">
-						Asesoría de imagen, lavado con masaje capilar, corte a
-						tijera o máquina y peinado con productos premium.
-					</p>
 				</div>
-				<!-- Servicio 2 -->
-				<div
-					class="p-8 border border-white/10 bg-white/5 hover:border-amber-500/50 transition-colors group"
-				>
-					<div class="flex justify-between items-baseline mb-4">
-						<h3
-							class="text-xl font-bold text-white group-hover:text-amber-500 transition-colors"
-						>
-							Perfilado de Barba
-						</h3>
-						<span class="text-amber-500 font-bold text-lg"
-							>$10.000</span
-						>
-					</div>
-					<p class="text-gray-400 text-sm leading-relaxed">
-						Ritual de toalla caliente, afeitado tradicional con
-						navaja, aceites esenciales y aftershave refrescante.
-					</p>
-				</div>
-				<!-- Servicio 3 -->
-				<div
-					class="p-8 border border-amber-900/30 bg-gradient-to-b from-amber-900/10 to-transparent hover:border-amber-500/50 transition-colors group relative overflow-hidden"
-				>
-					<div
-						class="absolute top-0 right-0 bg-amber-600 text-black text-xs font-bold px-2 py-1"
-					>
-						POPULAR
-					</div>
-					<div class="flex justify-between items-baseline mb-4">
-						<h3
-							class="text-xl font-bold text-white group-hover:text-amber-500 transition-colors"
-						>
-							Full Experience
-						</h3>
-						<span class="text-amber-500 font-bold text-lg"
-							>$22.000</span
-						>
-					</div>
-					<p class="text-gray-400 text-sm leading-relaxed">
-						La combinación perfecta: Corte de cabello + Perfilado de
-						barba + Mascarilla negra de limpieza facial.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<!-- 3. GALERÍA DE CORTES (Carrusel) -->
-	<section class="py-24 bg-black overflow-hidden">
-		<div
-			class="container mx-auto px-6 mb-10 flex justify-between items-end"
-		>
-			<h2 class="text-3xl font-bold text-white font-serif">
-				Resultados Reales
-			</h2>
-			<div class="flex gap-2">
-				<button
-					class="swiper-button-prev-custom w-10 h-10 border border-zinc-700 text-white hover:bg-amber-500 hover:text-black transition-colors flex items-center justify-center"
-					>←</button
-				>
-				<button
-					class="swiper-button-next-custom w-10 h-10 border border-zinc-700 text-white hover:bg-amber-500 hover:text-black transition-colors flex items-center justify-center"
-					>→</button
-				>
-			</div>
-		</div>
-
-		<div class="swiper mySwiper pl-4 md:pl-20">
-			<div class="swiper-wrapper">
-				<!-- Foto 1 -->
-				<div class="swiper-slide w-[300px]">
-					<div
-						class="h-[400px] bg-zinc-800 relative group overflow-hidden"
-					>
-						<img
-							src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=800"
-							class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-						/>
-					</div>
-					<p
-						class="text-amber-500 mt-3 font-bold text-sm tracking-widest uppercase"
-					>
-						Fade Clásico
-					</p>
-				</div>
-				<!-- Foto 2 -->
-				<div class="swiper-slide w-[300px]">
-					<div
-						class="h-[400px] bg-zinc-800 relative group overflow-hidden"
-					>
-						<img
-							src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=800"
-							class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-						/>
-					</div>
-					<p
-						class="text-amber-500 mt-3 font-bold text-sm tracking-widest uppercase"
-					>
-						Barba Leñadora
-					</p>
-				</div>
-				<!-- Foto 3 -->
-				<div class="swiper-slide w-[300px]">
-					<div
-						class="h-[400px] bg-zinc-800 relative group overflow-hidden"
-					>
-						<img
-							src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=800"
-							class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-						/>
-					</div>
-					<p
-						class="text-amber-500 mt-3 font-bold text-sm tracking-widest uppercase"
-					>
-						Pompadour
-					</p>
-				</div>
-				<!-- Foto 4 -->
-				<div class="swiper-slide w-[300px]">
-					<div
-						class="h-[400px] bg-zinc-800 relative group overflow-hidden"
-					>
-						<img
-							src="https://images.unsplash.com/photo-1503951914875-452162b7f304?q=80&w=800"
-							class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-						/>
-					</div>
-					<p
-						class="text-amber-500 mt-3 font-bold text-sm tracking-widest uppercase"
-					>
-						Ritual Navaja
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- SECCIÓN: MEMBRESÍA VIP (Banner Horizontal) -->
-	<section class="py-24 relative overflow-hidden">
-		<!-- Fondo Parallax Fijo -->
-		<div
-			class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074')] bg-cover bg-fixed bg-center"
-		>
-		</div>
-		<div class="absolute inset-0 bg-amber-900/90 mix-blend-multiply"></div>
-
-		<div
-			class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10"
-		>
-			<div class="text-white max-w-2xl">
-				<span
-					class="bg-black text-amber-500 text-xs font-bold px-3 py-1 uppercase tracking-widest mb-4 inline-block border border-amber-500/30"
-					>Club de Socios</span
-				>
-				<h2 class="text-4xl md:text-5xl font-bold font-serif mb-4">
-					The Black Card
+				<h2 class="text-3xl font-bold text-white mb-2 font-serif">
+					Reserva tu Sillón
 				</h2>
-				<p class="text-white/80 text-lg mb-8">
-					Únete a nuestro club exclusivo. Cortes ilimitados,
-					descuentos en productos y acceso prioritario a la agenda por
-					una suscripción mensual.
+				<p class="text-gray-400 mb-8 text-sm">
+					Confirmación inmediata vía WhatsApp.
 				</p>
-				<ul class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-8">
-					<li class="flex items-center gap-2">✓ 2 Cortes al mes</li>
-					<li class="flex items-center gap-2">✓ Perfilado semanal</li>
-					<li class="flex items-center gap-2">
-						✓ 15% off en pomadas
-					</li>
-					<li class="flex items-center gap-2">✓ Locker privado</li>
-				</ul>
-			</div>
 
-			<!-- Tarjeta Visual -->
-			<div
-				class="relative w-full md:w-[400px] h-[240px] bg-gradient-to-br from-zinc-800 to-black rounded-2xl border border-white/10 shadow-2xl p-8 flex flex-col justify-between transform hover:scale-105 transition-transform duration-500 group"
-			>
-				<div class="flex justify-between items-start">
-					<span
-						class="font-serif text-2xl text-white font-bold tracking-widest"
-						>VIP MEMBER</span
-					>
-					<img
-						src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
-						class="w-10 h-10 invert opacity-50"
-						alt="Chip"
-					/>
-				</div>
-				<div>
-					<p class="text-white/50 text-sm tracking-[0.2em] mb-2">
-						5412 7512 3412 3456
-					</p>
-					<div class="flex justify-between items-end">
-						<p class="text-white font-bold uppercase text-sm">
-							Juan Pérez
-						</p>
-						<p class="text-amber-500 font-bold text-xs">
-							VALID THRU 12/26
-						</p>
+				<form id="booking-form" class="space-y-4">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<input
+							type="text"
+							id="name"
+							placeholder="Nombre"
+							class="w-full bg-black border border-zinc-700 p-4 text-white focus:border-amber-500 focus:outline-none transition-colors placeholder:text-gray-600"
+							required
+						/>
+						<input
+							type="tel"
+							id="phone"
+							placeholder="Teléfono"
+							class="w-full bg-black border border-zinc-700 p-4 text-white focus:border-amber-500 focus:outline-none transition-colors placeholder:text-gray-600"
+							required
+						/>
 					</div>
-				</div>
-				<!-- Brillo dorado -->
-				<div
-					class="absolute inset-0 bg-gradient-to-tr from-transparent via-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"
-				>
-				</div>
+					<select
+						id="service"
+						class="w-full bg-black border border-zinc-700 p-4 text-white focus:border-amber-500 focus:outline-none transition-colors appearance-none text-gray-300"
+					>
+						<option>Corte Clásico</option>
+						<option>Barba Ritual</option>
+						<option>Full Experience</option>
+					</select>
+					<button
+						type="submit"
+						class="w-full bg-amber-600 hover:bg-amber-500 text-black font-bold p-4 uppercase tracking-widest text-sm transition-colors"
+					>
+						Enviar Solicitud
+					</button>
+				</form>
 			</div>
 		</div>
 	</section>
 
-	<!-- 4. SECCIÓN DE RESERVA (La Funcionalidad Clave) -->
-	<section
-		id="reservar"
-		class="py-24 bg-zinc-950 relative border-t border-zinc-900"
-	>
-		<div class="container mx-auto px-6">
-			<div class="flex flex-col md:flex-row gap-12 items-center">
-				<!-- Texto informativo -->
-				<div class="w-full md:w-1/2">
-					<span
-						class="text-amber-600 font-bold tracking-widest uppercase text-sm"
-						>Agenda tu visita</span
-					>
-					<h2
-						class="text-4xl md:text-5xl font-bold text-white mt-4 mb-6 font-serif"
-					>
-						¿Listo para el cambio?
-					</h2>
-					<p class="text-gray-400 text-lg mb-8">
-						Selecciona tu servicio y horario. Te confirmaremos
-						inmediatamente vía WhatsApp. Sin esperas, sin
-						complicaciones.
-					</p>
-					<ul class="space-y-4 text-gray-300">
-						<li class="flex items-center gap-3">
-							<span class="text-amber-500">✓</span> Bebida de cortesía
-							(Café o Whiskey)
-						</li>
-						<li class="flex items-center gap-3">
-							<span class="text-amber-500">✓</span> Wifi de alta velocidad
-						</li>
-						<li class="flex items-center gap-3">
-							<span class="text-amber-500">✓</span> Estacionamiento
-							gratuito
-						</li>
-					</ul>
-				</div>
-
-				<!-- Formulario de Reserva (Simula App) -->
-				<div
-					class="w-full md:w-1/2 bg-zinc-900 p-8 rounded-xl border border-zinc-800 shadow-2xl"
-				>
-					<form id="booking-form" class="space-y-5">
-						<div>
-							<label
-								class="block text-xs text-gray-500 uppercase font-bold mb-2"
-								>Tu Nombre</label
-							>
-							<input
-								type="text"
-								id="name"
-								required
-								class="w-full bg-black border border-zinc-700 text-white px-4 py-3 rounded focus:outline-none focus:border-amber-500 transition-colors"
-								placeholder="Ej: Juan Pérez"
-							/>
-						</div>
-
-						<div>
-							<label
-								class="block text-xs text-gray-500 uppercase font-bold mb-2"
-								>Servicio</label
-							>
-							<select
-								id="service"
-								class="w-full bg-black border border-zinc-700 text-white px-4 py-3 rounded focus:outline-none focus:border-amber-500 transition-colors"
-							>
-								<option value="Corte Clásico"
-									>Corte Clásico ($15.000)</option
-								>
-								<option value="Barba"
-									>Perfilado Barba ($10.000)</option
-								>
-								<option value="Full Experience"
-									>Full Experience ($22.000)</option
-								>
-							</select>
-						</div>
-
-						<div class="grid grid-cols-2 gap-4">
-							<div>
-								<label
-									class="block text-xs text-gray-500 uppercase font-bold mb-2"
-									>Fecha</label
-								>
-								<input
-									type="date"
-									id="date"
-									required
-									class="w-full bg-black border border-zinc-700 text-white px-4 py-3 rounded focus:outline-none focus:border-amber-500 transition-colors text-sm"
-								/>
-							</div>
-							<div>
-								<label
-									class="block text-xs text-gray-500 uppercase font-bold mb-2"
-									>Hora</label
-								>
-								<input
-									type="time"
-									id="time"
-									required
-									class="w-full bg-black border border-zinc-700 text-white px-4 py-3 rounded focus:outline-none focus:border-amber-500 transition-colors text-sm"
-								/>
-							</div>
-						</div>
-
-						<button
-							type="submit"
-							class="w-full bg-amber-600 hover:bg-amber-500 text-black font-bold py-4 rounded transition-all mt-4 flex justify-center items-center gap-2"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								><path
-									d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-								></path></svg
-							>
-							Confirmar Reserva
-						</button>
-						<p class="text-xs text-center text-gray-600 mt-2">
-							Te enviaremos la confirmación al WhatsApp.
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Footer -->
-	<footer
-		class="bg-black py-8 text-center border-t border-zinc-900 text-gray-600"
-	>
-		<p class="mb-2 text-white font-serif text-lg">THE BARBER CLUB</p>
-		<p class="text-sm">Av. Principal 123, Santiago • +56 9 1234 5678</p>
+	<footer class="py-8 text-center border-t border-white/5">
+		<p class="text-zinc-600 text-xs">
+			© 2025 The Barber Club. Santiago, Chile.
+		</p>
 	</footer>
 </Layout>
 
 <script>
-	/* 1. CARRUSEL */
+	// 1. Script de WhatsApp
+	const form = document.getElementById("booking-form");
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const name = (document.getElementById("name") as HTMLInputElement)
+			.value;
+		const service = (
+			document.getElementById("service") as HTMLSelectElement
+		).value;
+		window.open(
+			`https://wa.me/56912345678?text=Hola, soy ${name}. Quiero agendar un ${service}.`,
+			"_blank",
+		);
+	});
+
+	// 2. Configuración Carrusel (Swiper)
 	import Swiper from "swiper";
 	import { Navigation, Autoplay } from "swiper/modules";
 
 	new Swiper(".mySwiper", {
 		modules: [Navigation, Autoplay],
-		slidesPerView: "auto",
+		slidesPerView: 1,
 		spaceBetween: 20,
 		loop: true,
+		autoplay: { delay: 3500 },
 		navigation: {
-			nextEl: ".swiper-button-next-custom",
-			prevEl: ".swiper-button-prev-custom",
+			nextEl: ".next-btn",
+			prevEl: ".prev-btn",
 		},
-	});
-
-	/* 2. LÓGICA DE RESERVA (WhatsApp) */
-	const form = document.getElementById("booking-form");
-
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-
-		// Obtener datos
-		const name = document.getElementById("name").value;
-		const service = document.getElementById("service").value;
-		const date = document.getElementById("date").value;
-		const time = document.getElementById("time").value;
-
-		// Crear mensaje
-		const message = `Hola, soy ${name}. Me gustaría reservar una hora para: %0A✂️ Servicio: ${service} %0A📅 Fecha: ${date} %0A⏰ Hora: ${time}`;
-
-		// Redirigir a WhatsApp (Cambia el número 56912345678 por el tuyo real)
-		window.open(`https://wa.me/56912345678?text=${message}`, "_blank");
-	});
-	/* Lógica para transformar el menú al hacer scroll */
-	const navContainer = document.getElementById("nav-container");
-	const miniLogo = document.getElementById("mini-logo");
-
-	window.addEventListener("scroll", () => {
-		if (window.scrollY > 100) {
-			// ESTADO SCROLL: Se convierte en cápsula oscura
-			navContainer.classList.remove(
-				"bg-black/0",
-				"backdrop-blur-none",
-				"border-white/0",
-				"py-4",
-			);
-			navContainer.classList.add(
-				"bg-black/80",
-				"backdrop-blur-md",
-				"border-white/10",
-				"py-3",
-				"shadow-2xl",
-				"shadow-black/50",
-			);
-			miniLogo.classList.remove("opacity-0");
-		} else {
-			// ESTADO INICIAL: Transparente total
-			navContainer.classList.add(
-				"bg-black/0",
-				"backdrop-blur-none",
-				"border-white/0",
-				"py-4",
-			);
-			navContainer.classList.remove(
-				"bg-black/80",
-				"backdrop-blur-md",
-				"border-white/10",
-				"py-3",
-				"shadow-2xl",
-				"shadow-black/50",
-			);
-			miniLogo.classList.add("opacity-0");
-		}
+		breakpoints: {
+			640: { slidesPerView: 2 },
+			1024: { slidesPerView: 3 },
+		},
 	});
 </script>
 
 <style>
-	/* Estilo para inputs de fecha en modo oscuro */
-	input[type="date"]::-webkit-calendar-picker-indicator,
-	input[type="time"]::-webkit-calendar-picker-indicator {
-		filter: invert(1);
-		cursor: pointer;
-	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+	/* Animaciones CSS simples */
 	.animate-fade-in-up {
 		animation: fadeInUp 0.8s ease-out forwards;
+		opacity: 0;
+		transform: translateY(20px);
 	}
 	.delay-100 {
 		animation-delay: 0.1s;
@@ -696,16 +457,14 @@ import "swiper/css/pagination";
 	.delay-300 {
 		animation-delay: 0.3s;
 	}
-
-	@keyframes slowZoom {
-		from {
-			transform: scale(1);
-		}
-		to {
-			transform: scale(1.1);
-		}
+	.text-shadow {
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 	}
-	.animate-slow-zoom {
-		animation: slowZoom 20s linear infinite alternate;
+
+	@keyframes fadeInUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 </style>
