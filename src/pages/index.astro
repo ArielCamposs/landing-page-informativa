@@ -5,35 +5,82 @@ import "swiper/css/navigation";
 ---
 
 <Layout title="The Gentleman's Club | Barbería Premium">
-	<!-- MENÚ FLOTANTE -->
+	<!-- MENÚ FLOTANTE MEJORADO (Responsive) -->
 	<nav
-		class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto animate-fade-in-down"
+		class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto animate-fade-in-down font-sans"
 	>
+		<!-- CONTENEDOR PRINCIPAL -->
 		<div
-			class="bg-black/60 backdrop-blur-md border border-white/10 px-6 py-3 rounded-full shadow-2xl flex items-center justify-between md:justify-center gap-6 md:gap-10"
+			class="bg-black/80 backdrop-blur-md border border-white/10 px-4 py-3 rounded-full shadow-2xl flex items-center justify-between md:justify-center md:gap-10 relative z-50"
 		>
+			<!-- 1. BOTÓN MENÚ (Solo Móvil) -->
+			<button id="menu-toggle" class="md:hidden text-white p-2">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-6 h-6"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+				</svg>
+			</button>
+
+			<!-- ENLACES (Escritorio: Visibles / Móvil: Ocultos inicialmente) -->
 			<a
 				href="#"
-				class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
+				class="hidden md:block text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
 				>Inicio</a
 			>
 			<a
 				href="#nosotros"
-				class="hidden md:block text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
+				class="hidden md:block text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
 				>Nosotros</a
 			>
+
+			<!-- LOGO CENTRAL -->
 			<span class="text-xl font-serif font-bold text-amber-500 mx-2"
 				>TBC.</span
 			>
+
 			<a
 				href="#galeria"
-				class="hidden md:block text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
+				class="hidden md:block text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-amber-500 transition-colors"
 				>Trabajos</a
 			>
+
+			<!-- BOTÓN RESERVAR (Siempre visible) -->
 			<a
 				href="#reservar"
 				class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-amber-500 border border-amber-500/30 px-4 py-2 rounded-full hover:bg-amber-500 hover:text-black transition-all"
-				>Reservar</a
+			>
+				Reservar
+			</a>
+		</div>
+
+		<!-- MENÚ DESPLEGABLE MÓVIL (Se abre al dar click) -->
+		<div
+			id="mobile-menu"
+			class="absolute top-full left-0 w-full mt-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex-col gap-4 hidden md:hidden shadow-2xl origin-top animate-open-menu"
+		>
+			<a
+				href="#"
+				class="block text-center text-white uppercase tracking-widest text-sm py-2 border-b border-white/5 hover:text-amber-500"
+				>Inicio</a
+			>
+			<a
+				href="#nosotros"
+				class="block text-center text-white uppercase tracking-widest text-sm py-2 border-b border-white/5 hover:text-amber-500"
+				>Nosotros</a
+			>
+			<a
+				href="#galeria"
+				class="block text-center text-white uppercase tracking-widest text-sm py-2 hover:text-amber-500"
+				>Trabajos</a
 			>
 		</div>
 	</nav>
@@ -61,14 +108,16 @@ import "swiper/css/navigation";
 				class="text-amber-500 tracking-[0.4em] text-xs font-bold uppercase mb-6 block animate-fade-in-up"
 				>Santiago • Est. 2025</span
 			>
+			<!-- Reemplaza tu <h1> actual con esto -->
 			<h1
-				class="text-6xl md:text-9xl font-black text-white mb-6 tracking-tighter leading-none animate-fade-in-up delay-100 drop-shadow-2xl font-serif"
+				class="text-6xl md:text-9xl font-black text-white mb-6 tracking-tighter leading-none font-serif overflow-hidden"
 			>
-				THE BARBER <br />
+				<span class="block animate-reveal-up">THE BARBER</span>
 				<span
-					class="text-transparent bg-clip-text bg-gradient-to-b from-amber-300 to-amber-800"
-					>CLUB.</span
+					class="block text-transparent bg-clip-text bg-gradient-to-b from-amber-300 to-amber-800 animate-reveal-up delay-200"
 				>
+					CLUB.
+				</span>
 			</h1>
 			<p
 				class="text-gray-300 text-lg max-w-xl mx-auto mb-10 font-light tracking-wide animate-fade-in-up delay-200 text-shadow"
@@ -439,6 +488,21 @@ import "swiper/css/navigation";
 			1024: { slidesPerView: 3 },
 		},
 	});
+	const menuToggle = document.getElementById("menu-toggle");
+	const mobileMenu = document.getElementById("mobile-menu");
+
+	menuToggle?.addEventListener("click", () => {
+		mobileMenu?.classList.toggle("hidden");
+		mobileMenu?.classList.toggle("flex");
+	});
+
+	// Cerrar menú al hacer click en un enlace
+	mobileMenu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => {
+			mobileMenu.classList.add("hidden");
+			mobileMenu.classList.remove("flex");
+		});
+	});
 </script>
 
 <style>
@@ -466,5 +530,38 @@ import "swiper/css/navigation";
 			opacity: 1;
 			transform: translateY(0);
 		}
+	}
+
+	@keyframes openMenu {
+		from {
+			opacity: 0;
+			transform: scaleY(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: scaleY(1);
+		}
+	}
+	.animate-open-menu {
+		animation: openMenu 0.2s ease-out forwards;
+	}
+
+	@keyframes revealUp {
+		from {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	.animate-reveal-up {
+		animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Curva de animación suave estilo Apple */
+		opacity: 0; /* Empieza invisible */
+		transform: translateY(100%);
+	}
+	.delay-200 {
+		animation-delay: 0.2s;
 	}
 </style>
