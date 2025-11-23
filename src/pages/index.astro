@@ -412,57 +412,136 @@ import "swiper/css/navigation";
 			</div>
 		</section>
 
-		<!-- 5. RESERVA -->
-		<section id="reservar" class="py-24 relative">
-			<div class="container mx-auto px-6 max-w-3xl">
+		<!-- 5. RESERVA AVANZADA (Calendario + Horas) -->
+		<section id="reservar" class="py-24 relative bg-black/40">
+			<div class="container mx-auto px-6 max-w-4xl">
 				<div
-					class="bg-zinc-900/80 border border-white/10 p-8 md:p-12 shadow-2xl text-center relative overflow-hidden"
+					class="bg-zinc-900/90 border border-white/10 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-md"
 				>
-					<!-- Luz decorativa -->
+					<!-- Encabezado del Formulario -->
 					<div
-						class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50"
+						class="p-8 md:p-10 border-b border-white/10 text-center relative"
 					>
+						<div
+							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-70"
+						>
+						</div>
+						<h2
+							class="text-3xl font-bold text-white font-serif mb-2"
+						>
+							Agenda tu Cita
+						</h2>
+						<p class="text-gray-400 text-sm">
+							Selecciona el día y la hora perfecta para tu ritual.
+						</p>
 					</div>
 
-					<h2 class="text-3xl font-bold text-white mb-2 font-serif">
-						Reserva tu Sillón
-					</h2>
-					<p class="text-gray-400 mb-8 text-sm">
-						Confirmación inmediata vía WhatsApp.
-					</p>
-
-					<form id="booking-form" class="space-y-4">
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<input
-								type="text"
-								id="name"
-								placeholder="Nombre"
-								class="w-full bg-black border border-zinc-700 p-4 text-white focus:border-amber-500 focus:outline-none transition-colors placeholder:text-gray-600"
-								required
-							/>
-							<input
-								type="tel"
-								id="phone"
-								placeholder="Teléfono"
-								class="w-full bg-black border border-zinc-700 p-4 text-white focus:border-amber-500 focus:outline-none transition-colors placeholder:text-gray-600"
-								required
-							/>
+					<div class="flex flex-col md:flex-row">
+						<!-- COLUMNA 1: Datos del Cliente y Servicio -->
+						<div
+							class="w-full md:w-1/3 p-8 border-b md:border-b-0 md:border-r border-white/10 bg-white/5"
+						>
+							<h3
+								class="text-amber-500 font-bold uppercase text-xs tracking-widest mb-6"
+							>
+								1. Tus Datos
+							</h3>
+							<form id="booking-step-1" class="space-y-4">
+								<div>
+									<label
+										class="block text-xs text-gray-500 mb-1"
+										>Nombre Completo</label
+									>
+									<input
+										type="text"
+										id="name"
+										class="w-full bg-black border border-zinc-700 rounded p-3 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors"
+										placeholder="Ej: Marco Rossi"
+										required
+									/>
+								</div>
+								<div>
+									<label
+										class="block text-xs text-gray-500 mb-1"
+										>Servicio</label
+									>
+									<select
+										id="service"
+										class="w-full bg-black border border-zinc-700 rounded p-3 text-white text-sm focus:border-amber-500 focus:outline-none transition-colors"
+									>
+										<option value="Corte Clásico"
+											>Corte Clásico ($18.000)</option
+										>
+										<option value="Barba Ritual"
+											>Barba Ritual ($15.000)</option
+										>
+										<option value="Full Experience"
+											>Full Experience ($28.000)</option
+										>
+									</select>
+								</div>
+							</form>
 						</div>
-						<select
-							id="service"
-							class="w-full bg-black border border-zinc-700 p-4 text-white focus:border-amber-500 focus:outline-none transition-colors appearance-none text-gray-300"
-						>
-							<option>Corte Clásico</option>
-							<option>Barba Ritual</option>
-							<option>Full Experience</option>
-						</select>
-						<button
-							type="submit"
-							class="w-full bg-amber-600 hover:bg-amber-500 text-black font-bold p-4 uppercase tracking-widest text-sm transition-colors"
-						>
-							Enviar Solicitud
-						</button>
-					</form>
+
+						<!-- COLUMNA 2: Calendario y Horas -->
+						<div class="w-full md:w-2/3 p-8">
+							<h3
+								class="text-amber-500 font-bold uppercase text-xs tracking-widest mb-6"
+							>
+								2. Fecha y Hora
+							</h3>
+
+							<!-- Selector de Fecha (Nativo pero estilizado y limitado) -->
+							<div class="mb-6">
+								<label class="block text-xs text-gray-500 mb-2"
+									>Selecciona el Día</label
+								>
+								<input
+									type="date"
+									id="date-picker"
+									class="w-full bg-black border border-zinc-700 rounded p-3 text-white focus:border-amber-500 focus:outline-none transition-colors cursor-pointer"
+								/>
+							</div>
+
+							<!-- Grilla de Horarios (Generada por JS) -->
+							<div>
+								<label class="block text-xs text-gray-500 mb-2"
+									>Horarios Disponibles</label
+								>
+								<div
+									id="time-slots"
+									class="grid grid-cols-3 sm:grid-cols-4 gap-3"
+								>
+									<!-- Aquí se inyectan los botones con JS -->
+									<p
+										class="text-gray-600 text-xs col-span-full italic"
+									>
+										Selecciona una fecha primero.
+									</p>
+								</div>
+							</div>
+
+							<!-- Input oculto para guardar la hora seleccionada -->
+							<input type="hidden" id="selected-time" />
+
+							<!-- Botón Final -->
+							<div class="mt-8 pt-6 border-t border-white/10">
+								<button
+									id="confirm-booking"
+									class="w-full bg-amber-600 hover:bg-amber-500 text-black font-bold py-4 rounded uppercase tracking-widest text-sm transition-all opacity-50 cursor-not-allowed"
+									disabled
+								>
+									Confirmar Reserva
+								</button>
+								<p
+									class="text-center text-gray-500 text-[10px] mt-3"
+								>
+									Se abrirá WhatsApp con los detalles de tu
+									cita.
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -524,6 +603,123 @@ import "swiper/css/navigation";
 				mobileMenu.classList.remove("flex");
 			});
 		});
+		// LÓGICA DEL CALENDARIO Y HORARIOS
+
+		const datePicker = document.getElementById(
+			"date-picker",
+		) as HTMLInputElement;
+		const timeSlotsContainer = document.getElementById("time-slots");
+		const selectedTimeInput = document.getElementById(
+			"selected-time",
+		) as HTMLInputElement;
+		const confirmBtn = document.getElementById(
+			"confirm-booking",
+		) as HTMLButtonElement;
+		const nameInput = document.getElementById("name") as HTMLInputElement;
+
+		// 1. Configurar Fecha Mínima (Hoy)
+		const today = new Date().toISOString().split("T")[0];
+		datePicker.min = today;
+		datePicker.value = today; // Seleccionar hoy por defecto
+
+		// 2. Generar Horarios (De 10:00 a 18:00)
+		const startHour = 10;
+		const endHour = 18;
+
+		function generateTimeSlots() {
+			timeSlotsContainer.innerHTML = ""; // Limpiar
+			selectedTimeInput.value = ""; // Resetear selección
+			checkFormValidity();
+
+			for (let hour = startHour; hour <= endHour; hour++) {
+				// Crear hora en formato "10:00"
+				const timeString = `${hour}:00`;
+
+				const btn = document.createElement("button");
+				btn.type = "button";
+				btn.className =
+					"py-2 px-1 text-sm border border-zinc-700 rounded text-gray-300 hover:border-amber-500 hover:text-amber-500 transition-all focus:outline-none time-slot-btn";
+				btn.textContent = timeString;
+
+				// Evento Click
+				btn.addEventListener("click", function () {
+					// Quitar clase activa de todos
+					document.querySelectorAll(".time-slot-btn").forEach((b) => {
+						b.classList.remove(
+							"bg-amber-600",
+							"text-black",
+							"border-amber-600",
+							"font-bold",
+						);
+						b.classList.add("text-gray-300", "border-zinc-700");
+					});
+
+					// Activar este botón
+					this.classList.remove(
+						"text-gray-300",
+						"border-zinc-700",
+						"hover:border-amber-500",
+						"hover:text-amber-500",
+					);
+					this.classList.add(
+						"bg-amber-600",
+						"text-black",
+						"border-amber-600",
+						"font-bold",
+					);
+
+					// Guardar valor
+					selectedTimeInput.value = timeString;
+					checkFormValidity();
+				});
+
+				timeSlotsContainer.appendChild(btn);
+			}
+		}
+
+		// 3. Validar formulario para activar botón
+		function checkFormValidity() {
+			if (
+				nameInput.value.trim() !== "" &&
+				datePicker.value !== "" &&
+				selectedTimeInput.value !== ""
+			) {
+				confirmBtn.disabled = false;
+				confirmBtn.classList.remove("opacity-50", "cursor-not-allowed");
+			} else {
+				confirmBtn.disabled = true;
+				confirmBtn.classList.add("opacity-50", "cursor-not-allowed");
+			}
+		}
+
+		// Listeners
+		datePicker.addEventListener("change", generateTimeSlots);
+		nameInput.addEventListener("input", checkFormValidity);
+
+		// Inicializar horarios al cargar
+		generateTimeSlots();
+
+		// 4. Enviar a WhatsApp (Corregido)
+		confirmBtn.addEventListener("click", () => {
+			const name = nameInput.value;
+			const service = (
+				document.getElementById("service") as HTMLSelectElement
+			).value;
+			const date = datePicker.value;
+			const time = selectedTimeInput.value;
+
+			// Creamos el texto limpio primero
+			const textRaw = `Hola TBC, soy *${name}*.\nQuisiera reservar una hora: \n *${service}*\n Fecha: *${date}*\n Hora: *${time}*`;
+
+			// Codificamos todo el texto para URL de forma segura
+			const textEncoded = encodeURIComponent(textRaw);
+
+			// Abrimos WhatsApp
+			window.open(
+				`https://wa.me/56912345678?text=${textEncoded}`,
+				"_blank",
+			);
+		});
 	</script>
 
 	<style>
@@ -584,6 +780,15 @@ import "swiper/css/navigation";
 		}
 		.delay-200 {
 			animation-delay: 0.2s;
+		}
+		/* Icono de calendario invertido para modo oscuro */
+		input[type="date"]::-webkit-calendar-picker-indicator {
+			filter: invert(1);
+			cursor: pointer;
+			opacity: 0.6;
+		}
+		input[type="date"]::-webkit-calendar-picker-indicator:hover {
+			opacity: 1;
 		}
 	</style>
 </Layout>
